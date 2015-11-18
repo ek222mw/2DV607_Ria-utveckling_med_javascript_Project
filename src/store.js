@@ -1,9 +1,9 @@
 var Redux = require('redux'),
-    Image = require('./reducers/image'),
+    QuizReducer = require('./reducers/quiz'),
     initialState = require('./initialstate');
 
 var reducers = Redux.combineReducers({
-    ImageReducer: Image
+    quiz: QuizReducer
 });
 
 var store = Redux.createStore(reducers, initialState());

@@ -4,12 +4,11 @@ var React = require('react'),
     IndexRoute = ReactRouter.IndexRoute,
     Wrapper = require('./components/wrapper');
     Home = require('./components/home'),
-	Image = require('./components/image');
-	
+	Quiz = require('./components/quiz');
 	
 module.exports = (
     <Route path='/' component={Wrapper}>
         <IndexRoute component={Home}/>
-		<Route path='/image' component={Image}/>
+		<Route path="/quiz" component={Quiz}/>
     </Route>
 );
