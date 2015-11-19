@@ -7,23 +7,24 @@ var quiz = React.createClass({
     propTypes: {
         quiz: ptypes.func.isRequired
     },
-    getInitialState: function() {
-    	return { answer: "Ans1" }
-    },
     onAnswerChanged: function(e) {
     	this.setState({ answer: e.currentTarget.value });
+    },
+	getInitialState: function() {
+    	return { answer: "Ans1" }
     },
     render: function(){
         return (
             <div>
                 <h2>Quiz</h2>
-				<p>In which band was Bon Scott the singer? </p>
+				<p>{this.props.question}</p>
                 <p>Message: {this.props.currentValue}</p>
+				<p>Points: {this.props.Points}</p>
                 <p>
 				
-					<input type="radio" name="q1" value="Ans1" checked={this.state.answer === "Ans1"} onChange={this.onAnswerChanged}/>Iron Maiden<br/>
-					<input type="radio" name="q1" value="Ans2" checked={this.state.answer === "Ans2"} onChange={this.onAnswerChanged}/>Metallica<br/>
-					<input type="radio" name="q1" value="Ans3" checked={this.state.answer === "Ans3"} onChange={this.onAnswerChanged}/>AC/DC<br/>
+					<input type="radio" name="q1" value="Ans1" checked={this.state.answer === "Ans1"} onChange={this.onAnswerChanged}/>{this.props.Choice1}<br/>
+					<input type="radio" name="q1" value="Ans2" checked={this.state.answer === "Ans2"} onChange={this.onAnswerChanged}/>{this.props.Choice2}<br/>
+					<input type="radio" name="q1" value="Ans3" checked={this.state.answer === "Ans3"} onChange={this.onAnswerChanged}/>{this.props.Choice3}<br/>
 				
                     <button onClick={this.props.quiz.bind(null, this.state.answer)}>Next question</button>
 					

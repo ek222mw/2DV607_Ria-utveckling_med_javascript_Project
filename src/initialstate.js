@@ -11,7 +11,17 @@ var C = require("./constants");
 module.exports = function(){
     return {
         quiz: {
-            currentValue: ""
+            currentValue: "",
+			Points: 0,
+			question: "Which company bought the company King which created the game candy crush?",
+				CountQuestions: 0,
+				CountChoices: 0,
+				Choice1: "Valve",
+				Choice2: "Microsoft",
+				Choice3: "Blizzard",
+				CountAnswers: 0
+				
+			
         
 		}	
     }
