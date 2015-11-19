@@ -7,6 +7,12 @@ var quiz = React.createClass({
     propTypes: {
         quiz: ptypes.func.isRequired
     },
+    getInitialState: function() {
+    	return { answer: "Ans1" }
+    },
+    onAnswerChanged: function(e) {
+    	this.setState({ answer: e.currentTarget.value });
+    },
     render: function(){
         return (
             <div>
@@ -15,11 +21,11 @@ var quiz = React.createClass({
                 <p>Message: {this.props.currentValue}</p>
                 <p>
 				
-					<input type="radio" name="q1" id="Ans1" value="1"/>Iron Maiden<br/>
-					<input type="radio" name="q1" id="Ans2" value="2"/>Metallica<br/>
-					<input type="radio" name="q1" id="Ans3" value="3"/>AC/DC<br/>
+					<input type="radio" name="q1" value="Ans1" checked={this.state.answer === "Ans1"} onChange={this.onAnswerChanged}/>Iron Maiden<br/>
+					<input type="radio" name="q1" value="Ans2" checked={this.state.answer === "Ans2"} onChange={this.onAnswerChanged}/>Metallica<br/>
+					<input type="radio" name="q1" value="Ans3" checked={this.state.answer === "Ans3"} onChange={this.onAnswerChanged}/>AC/DC<br/>
 				
-                    <button onClick={this.props.quiz}>Next question</button>
+                    <button onClick={this.props.quiz.bind(null, this.state.answer)}>Next question</button>
 					
                 </p>
             </div>
@@ -33,8 +39,8 @@ var mapStateToProps = function(state){
 
 var mapDispatchToProps = function(dispatch){
     return {
-        quiz: function(){
-            dispatch(actions.quiz());
+        quiz: function(answer){
+            dispatch(actions.quiz(answer));
         }
     }
 };

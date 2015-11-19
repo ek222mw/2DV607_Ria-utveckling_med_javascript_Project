@@ -4,7 +4,7 @@ var QuizReducer = function(state, action){
     var newState = Object.assign({}, state);
     switch(action.type){
         case 'Pressed':
-            if(document.getElementById('Ans3').checked)
+            if(action.answer === "Ans3")
 			{
 				newState.currentValue = "Correct";
 			}

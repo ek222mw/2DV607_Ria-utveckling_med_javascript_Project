@@ -9,8 +9,8 @@ var constants = require("./constants");
 
 module.exports = {
 	
-		quiz: function(){
-        return {type: 'Pressed'};
+		quiz: function(answer){
+        return {type: 'Pressed', answer: answer};
     }
 	
 };
