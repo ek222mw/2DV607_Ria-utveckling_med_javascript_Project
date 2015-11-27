@@ -21,7 +21,7 @@ module.exports = function(){
 				Choice3: "Blizzard",
 				CountAnswers: 0
 				
-				
+
 			
         
 		}	
