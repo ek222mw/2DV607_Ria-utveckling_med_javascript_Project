@@ -13,15 +13,15 @@ module.exports = function(){
         quiz: {
             currentValue: "",
 			Points: 0,
-			question: "Which company bought the company King which created the game candy crush?",
+			question: "",
 				CountQuestions: 0,
 				CountChoices: 0,
-				Choice1: "Valve",
-				Choice2: "Microsoft",
-				Choice3: "Blizzard",
+				Choice1: "",
+				Choice2: "",
+				Choice3: "",
 				CountAnswers: 0
 				
-
+				
 			
         
 		}	
