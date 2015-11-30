@@ -3,60 +3,64 @@ var initialState = require('./../initialstate');
 var QuizReducer = function(state, action){
     var newState = Object.assign({}, state);
 	
+	var quest1 = {quest:"Which company bought the company King which created the game candy crush?",opt:["Valve","Microsoft","Blizzard"],CorrAns:"Ans3"};
+	var quest2 = {quest:"In which band was Bon Scott the singer?",opt:["Iron Maiden","Metallica","AC/DC"],CorrAns:"Ans3"};
+	var quest3 = {quest:"In which NHL team did Teemu Selänne play?",opt:["Chicago Blackhawks","Anaheim Mighty Ducks", "Boston Bruins"],CorrAns:"Ans2"};
 	
-	
-	var quizObj = {quests:["Which company bought the company King which created the game candy crush?","In which band was Bon Scott the singer?", "In which NHL team did Teemu Selänne play?"],
-	opt:["Valve","Microsoft","Blizzard","Iron Maiden","Metallica","AC/DC", "Chicago Blackhawks","Anaheim Mighty Ducks", "Boston Bruins"],
-	CorrAns:["Ans3","Ans3","Ans3","Ans2"]};
+	var quizObj = [quest1,quest2,quest3];
 	
 			newState.CountAnswers++;
-			newState.Choice1 = quizObj.opt[newState.CountChoices];
+			newState.Choice1 = quizObj[0].opt[newState.CountChoices];
 			newState.CountChoices++;
 			
-			newState.question = quizObj.quests[newState.CountQuestions];
+			newState.question = quizObj[0].quest[newState.CountQuestions];
 			newState.CountQuestions++;
 			
-			newState.Choice2 = quizObj.opt[newState.CountChoices];
+			newState.Choice2 = quizObj[0].opt[newState.CountChoices];
 			newState.CountChoices++;
 			
-			newState.Choice3 = quizObj.opt[newState.CountChoices];
+			newState.Choice3 = quizObj[0].opt[newState.CountChoices];
 			newState.CountChoices++;
-	
+			
 	
     switch(action.type){
         case 'Pressed':
-            if(action.answer === quizObj.CorrAns[newState.CountAnswers])
+            if(action.answer === quizObj[0].CorrAns[newState.CountAnswers])
 			{
 				newState.Points++;
 				newState.CountAnswers++;
 				newState.currentValue = "Correct";
+				newState.pos++;
 				
-				newState.Choice1 = quizObj.opt[newState.CountChoices];
+				console.log(newState.CountChoices);
+				newState.Choice1 = quizObj[0].opt[newState.CountChoices];
 				newState.CountChoices++;
 				
-				newState.question = quizObj.quests[newState.CountQuestions];
+				newState.question = quizObj[0].quest[newState.CountQuestions];
 				newState.CountQuestions++;
 				
-				newState.Choice2 = quizObj.opt[newState.CountChoices];
+				newState.Choice2 = quizObj[0].opt[newState.CountChoices];
 				newState.CountChoices++;
 				
-				newState.Choice3 = quizObj.opt[newState.CountChoices];
+				newState.Choice3 = quizObj[0].opt[newState.CountChoices];
 				newState.CountChoices++;
 			}
 			else{
 				newState.currentValue = "False";
 				newState.CountAnswers++;;
+				newState.pos++;
 				
-				newState.Choice1 = quizObj.opt[newState.CountChoices];
+				newState.CountAnswers++;
+				newState.Choice1 = quizObj[1].opt[newState.CountChoices];
 				newState.CountChoices++;
 				
-				newState.question = quizObj.quests[newState.CountQuestions];
+				newState.question = quizObj[1].quest[newState.CountQuestions];
 				newState.CountQuestions++;
 				
-				newState.Choice2 = quizObj.opt[newState.CountChoices];
+				newState.Choice2 = quizObj[1].opt[newState.CountChoices];
 				newState.CountChoices++;
 				
-				newState.Choice3 = quizObj.opt[newState.CountChoices];
+				newState.Choice3 = quizObj[1].opt[newState.CountChoices];
 				newState.CountChoices++;
 			}
             return newState;

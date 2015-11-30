@@ -19,7 +19,8 @@ module.exports = function(){
 				Choice1: "",
 				Choice2: "",
 				Choice3: "",
-				CountAnswers: 0
+				CountAnswers: 0,
+				pos: 0
 				
 				
 			
