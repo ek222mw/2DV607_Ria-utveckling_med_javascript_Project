@@ -9,59 +9,58 @@ var QuizReducer = function(state, action){
 	
 	var quizObj = [quest1,quest2,quest3];
 	
-			newState.CountAnswers++;
-			newState.Choice1 = quizObj[0].opt[newState.CountChoices];
-			newState.CountChoices++;
 			
-			newState.question = quizObj[0].quest[newState.CountQuestions];
-			newState.CountQuestions++;
+			newState.Choice1 = quizObj[0].opt[0];
 			
-			newState.Choice2 = quizObj[0].opt[newState.CountChoices];
-			newState.CountChoices++;
 			
-			newState.Choice3 = quizObj[0].opt[newState.CountChoices];
-			newState.CountChoices++;
+			newState.question = quizObj[0].quest;
 			
-	
+			
+			newState.Choice2 = quizObj[0].opt[1];
+			
+			
+			newState.Choice3 = quizObj[0].opt[2];
+			
+			
     switch(action.type){
         case 'Pressed':
-            if(action.answer === quizObj[0].CorrAns[newState.CountAnswers])
+            if(action.answer === quizObj[newState.pos].CorrAns)
 			{
 				newState.Points++;
-				newState.CountAnswers++;
+				
 				newState.currentValue = "Correct";
 				newState.pos++;
 				
-				console.log(newState.CountChoices);
-				newState.Choice1 = quizObj[0].opt[newState.CountChoices];
-				newState.CountChoices++;
 				
-				newState.question = quizObj[0].quest[newState.CountQuestions];
-				newState.CountQuestions++;
+				newState.Choice1 = quizObj[newState.pos].opt[0];
 				
-				newState.Choice2 = quizObj[0].opt[newState.CountChoices];
-				newState.CountChoices++;
 				
-				newState.Choice3 = quizObj[0].opt[newState.CountChoices];
-				newState.CountChoices++;
+				newState.question = quizObj[newState.pos].quest;
+				
+				
+				newState.Choice2 = quizObj[newState.pos].opt[1];
+				
+				
+				newState.Choice3 = quizObj[newState.pos].opt[2];
+				
 			}
 			else{
 				newState.currentValue = "False";
-				newState.CountAnswers++;;
+				
 				newState.pos++;
 				
-				newState.CountAnswers++;
-				newState.Choice1 = quizObj[1].opt[newState.CountChoices];
-				newState.CountChoices++;
 				
-				newState.question = quizObj[1].quest[newState.CountQuestions];
-				newState.CountQuestions++;
+				newState.Choice1 = quizObj[newState.pos].opt[0];
 				
-				newState.Choice2 = quizObj[1].opt[newState.CountChoices];
-				newState.CountChoices++;
 				
-				newState.Choice3 = quizObj[1].opt[newState.CountChoices];
-				newState.CountChoices++;
+				newState.question = quizObj[newState.pos].quest;
+				
+				
+				newState.Choice2 = quizObj[newState.pos].opt[1];
+				
+				
+				newState.Choice3 = quizObj[newState.pos].opt[2];
+				
 			}
             return newState;
         default:
