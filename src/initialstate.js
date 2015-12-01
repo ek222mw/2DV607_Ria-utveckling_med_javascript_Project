@@ -20,7 +20,8 @@ module.exports = function(){
 				Choice2: "",
 				Choice3: "",
 				CountAnswers: 0,
-				pos: 0
+				pos: 0,
+				bool: 0
 				
 				
 			
