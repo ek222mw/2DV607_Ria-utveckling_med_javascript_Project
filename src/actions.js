@@ -11,6 +11,9 @@ module.exports = {
 	
 		quiz: function(answer){
         return {type: 'Pressed', answer: answer};
+    },
+	start: function(){
+        return {type: 'Start'};
     }
 	
 };
