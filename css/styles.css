@@ -1,14 +1,12 @@
-.battler {
-	float: left;
-	width: 100px;
-	height: 100px;
-	margin: 0.5em;
-	border: 1px solid black;
-	padding: 0.5em;
+#cont{
+	visibility:hidden;
 }
-
-.battlers:after {
-    content: "";
-    display: block;
-    clear: both;
+#msg{
+	visibility:hidden;
+}
+#pts{
+	visibility:hidden;
+}
+#quest{
+	visibility:hidden;
 }

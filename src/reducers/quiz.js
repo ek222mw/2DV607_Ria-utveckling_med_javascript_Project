@@ -6,6 +6,14 @@ var QuizReducer = function(state, action){
 		
 		case 'Start':
 		{
+			document.getElementById('startbtn').style.visibility= "hidden";
+			document.getElementById('cont').style.visibility= "visible";
+			document.getElementById('quest').style.visibility= "visible";
+			document.getElementById('pts').style.visibility= "visible";
+			document.getElementById('msg').style.visibility= "visible";
+			newState.Points = 0;
+			newState.currentValue ="";
+			newState.pos = 0;
 			newState.quizArr = _.shuffle(newState.quizArr);
 			newState.Choice1 = newState.quizArr[newState.pos].opt[0];
 			newState.question = newState.quizArr[newState.pos].quest;
@@ -15,11 +23,24 @@ var QuizReducer = function(state, action){
 		}
 		
         case 'Pressed':
-		
-			console.log(action.answer);
-			console.log(newState.quizArr[newState.pos].CorrAns);
-		
-            if(action.answer === newState.quizArr[newState.pos].CorrAns)
+			console.log(newState.quizArr.length);
+			console.log(newState.pos);
+			if(newState.quizArr.length-1 === newState.pos)
+			{
+				document.getElementById('startbtn').style.visibility= "visible";
+				document.getElementById('cont').style.visibility= "hidden";
+				document.getElementById('quest').style.visibility= "hidden";
+				document.getElementById('pts').style.visibility= "hidden";
+				document.getElementById('msg').style.visibility= "visible";
+				if(action.answer === newState.quizArr[newState.pos].CorrAns)
+				{
+					newState.Points++;
+				}
+				newState.currentValue = "You score was "+newState.Points+"/"+newState.quizArr.length;
+			}
+			
+			
+            else if(action.answer === newState.quizArr[newState.pos].CorrAns)
 			{
 				newState.Points++;
 				newState.currentValue = "Correct";

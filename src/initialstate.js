@@ -26,7 +26,8 @@ module.exports = function(){
 				Choice3: "",
 				CountAnswers: 0,
 				pos: 0,
-				quizArr:[quest1, quest2, quest3]
+				quizArr:[quest1, quest2, quest3],
+				
 				
 				
 			

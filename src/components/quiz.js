@@ -16,21 +16,22 @@ var quiz = React.createClass({
     },
     render: function(){
         return (
-            <div>
-                <h2>Quiz</h2>
-				<p>{this.props.question}</p>
-                <p>Message: {this.props.currentValue}</p>
-				<p>Points: {this.props.Points}</p>
-                <p>
+            <div >
+                <h2 id='h2'>Quiz</h2>
+				<button id='startbtn' onClick={this.props.start}>Start</button>
+				<p id='quest'>{this.props.question}</p>
+                <p id='msg'>Message: {this.props.currentValue}</p>
+				<p id='pts'>Points: {this.props.Points}</p>
+                <p id='cont'>
 				
-					<input type="radio" name="q1" value="Ans1" checked={this.state.answer === "Ans1"} onChange={this.onAnswerChanged}/>{this.props.Choice1}<br/>
-					<input type="radio" name="q1" value="Ans2" checked={this.state.answer === "Ans2"} onChange={this.onAnswerChanged}/>{this.props.Choice2}<br/>
-					<input type="radio" name="q1" value="Ans3" checked={this.state.answer === "Ans3"} onChange={this.onAnswerChanged}/>{this.props.Choice3}<br/>
+					<input id='ch1' type="radio" name="q1" value="Ans1" checked={this.state.answer === "Ans1"} onChange={this.onAnswerChanged}/>{this.props.Choice1}<br/>
+					<input id='ch2' type="radio" name="q1" value="Ans2" checked={this.state.answer === "Ans2"} onChange={this.onAnswerChanged}/>{this.props.Choice2}<br/>
+					<input id='ch3' type="radio" name="q1" value="Ans3" checked={this.state.answer === "Ans3"} onChange={this.onAnswerChanged}/>{this.props.Choice3}<br/>
 				
-                    <button onClick={this.props.quiz.bind(null, this.state.answer)}>Next question</button>
-					<button onClick={this.props.start}>Start</button>
+                    <button id='nxt' onClick={this.props.quiz.bind(null, this.state.answer)}>Next question</button>
 					
                 </p>
+				
             </div>
         );
     }
