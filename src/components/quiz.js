@@ -24,9 +24,9 @@ var quiz = React.createClass({
 				<p id='pts'>Points: {this.props.Points}</p>
                 <p id='cont'>
 				
-					<input id='ch1' type="radio" name="q1" value="Ans1" checked={this.state.answer === "Ans1"} onChange={this.onAnswerChanged}/>{this.props.Choice1}<br/>
-					<input id='ch2' type="radio" name="q1" value="Ans2" checked={this.state.answer === "Ans2"} onChange={this.onAnswerChanged}/>{this.props.Choice2}<br/>
-					<input id='ch3' type="radio" name="q1" value="Ans3" checked={this.state.answer === "Ans3"} onChange={this.onAnswerChanged}/>{this.props.Choice3}<br/>
+					<input id='ch1' type="radio" name="q1" value="1" checked={this.state.answer === "1"} onChange={this.onAnswerChanged}/>{this.props.Choice1}<br/>
+					<input id='ch2' type="radio" name="q1" value="2" checked={this.state.answer === "2"} onChange={this.onAnswerChanged}/>{this.props.Choice2}<br/>
+					<input id='ch3' type="radio" name="q1" value="3" checked={this.state.answer === "3"} onChange={this.onAnswerChanged}/>{this.props.Choice3}<br/>
 				
                     <button id='nxt' onClick={this.props.quiz.bind(null, this.state.answer)}>Next question</button>
 					
