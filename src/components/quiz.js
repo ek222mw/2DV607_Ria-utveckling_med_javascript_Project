@@ -6,7 +6,9 @@ var React = require('react'),
 var quiz = React.createClass({
     propTypes: {
         quiz: ptypes.func.isRequired,
-		start: ptypes.func.isRequired
+		start: ptypes.func.isRequired,
+		startnhlquiz: ptypes.func.isRequired,
+		nhlquiz: ptypes.func.isRequired
     },
     onAnswerChanged: function(e) {
     	this.setState({ answer: e.currentTarget.value });
@@ -18,7 +20,8 @@ var quiz = React.createClass({
         return (
             <div >
                 <h2 id='h2'>Quiz</h2>
-				<button id='startbtn' onClick={this.props.start}>Start</button>
+				<button id='startbtn' onClick={this.props.start}>Mixed Quiz</button>
+				<button id='startbtnNHL' onClick={this.props.startnhlquiz}>NHL Quiz</button>
 				<p id='quest'>{this.props.question}</p>
                 <p id='msg'>Message: {this.props.currentValue}</p>
 				<p id='pts'>Points: {this.props.Points}</p>
@@ -29,6 +32,7 @@ var quiz = React.createClass({
 					<input id='ch3' type="radio" name="q1" value="3" checked={this.state.answer === "3"} onChange={this.onAnswerChanged}/>{this.props.Choice3}<br/>
 				
                     <button id='nxt' onClick={this.props.quiz.bind(null, this.state.answer)}>Next question</button>
+					<button id='nxtNHL' onClick={this.props.nhlquiz.bind(null, this.state.answer)}>Next</button>
 					
                 </p>
 				
@@ -48,7 +52,14 @@ var mapDispatchToProps = function(dispatch){
         },
 		start: function(){
             dispatch(actions.start());
+        },
+		startnhlquiz: function(){
+            dispatch(actions.startnhlquiz());
+        },
+		nhlquiz: function(answer){
+            dispatch(actions.nhlquiz(answer));
         }
+		
     }
 };
 
