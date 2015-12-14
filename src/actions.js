@@ -20,6 +20,9 @@ module.exports = {
     },
 	nhlquiz: function(answer){
 		return {type: 'NHL Quiz', answer: answer};
+    },
+	highscore: function(){
+        return {type: 'Highscore'};
     }
 	
 };

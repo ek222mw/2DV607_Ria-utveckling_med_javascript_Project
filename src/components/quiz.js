@@ -8,7 +8,8 @@ var quiz = React.createClass({
         quiz: ptypes.func.isRequired,
 		start: ptypes.func.isRequired,
 		startnhlquiz: ptypes.func.isRequired,
-		nhlquiz: ptypes.func.isRequired
+		nhlquiz: ptypes.func.isRequired,
+		highscore: ptypes.func.isRequired
     },
     onAnswerChanged: function(e) {
     	this.setState({ answer: e.currentTarget.value });
@@ -22,6 +23,8 @@ var quiz = React.createClass({
                 <h2 id='h2'>Quiz</h2>
 				<button id='startbtn' onClick={this.props.start}>Mixed Quiz</button>
 				<button id='startbtnNHL' onClick={this.props.startnhlquiz}>NHL Quiz</button>
+				<button id='highscore' onClick={this.props.highscore}>Highscores</button>
+				<p id='highscoremsg'>{this.props.highscoremsg}</p>
 				<p id='quest'>{this.props.question}</p>
                 <p id='msg'>Message: {this.props.currentValue}</p>
 				<p id='pts'>Points: {this.props.Points}</p>
@@ -58,6 +61,9 @@ var mapDispatchToProps = function(dispatch){
         },
 		nhlquiz: function(answer){
             dispatch(actions.nhlquiz(answer));
+        },
+		highscore: function(){
+            dispatch(actions.highscore());
         }
 		
     }

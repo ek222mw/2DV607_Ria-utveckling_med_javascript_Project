@@ -23,7 +23,8 @@ module.exports = function(){
 				Choice3: "",
 				CountAnswers: 0,
 				pos: 0,
-				
+				HighScore: 0,
+				highscoremsg: "",
 				
 				
 				
