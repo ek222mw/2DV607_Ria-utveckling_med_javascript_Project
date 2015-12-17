@@ -15,10 +15,8 @@ fireRef.on("value", function(snapshot) {
 var QuizReducer = function(state, action){
     var newState = Object.assign({}, state);
 	newState.HighScore = mixed;
-	console.log(action.type);
 	
     switch(action.type){
-		
 		case '1':
 		{
 			newState.Inprogress = true;
@@ -70,15 +68,9 @@ var QuizReducer = function(state, action){
 				{
 					newState.highscoremsg = "Mixed Highscore is "+newState.HighScore+"/"+quizArr.length;
 				}
-				
-				
-				
-				
+			
 				return newState;
-				
-				
-				
-				
+			
 			}
 			
 			
