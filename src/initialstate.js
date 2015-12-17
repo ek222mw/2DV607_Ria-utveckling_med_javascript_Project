@@ -25,11 +25,9 @@ module.exports = function(){
 				pos: 0,
 				HighScore: 0,
 				highscoremsg: "",
-				
-				
-				
-			
-        
+				Inprogress: false,
+				quiznumber:0,
+				ch: 0
 		}	
     }
 };

@@ -7,9 +7,7 @@ var quiz = React.createClass({
     propTypes: {
         quiz: ptypes.func.isRequired,
 		start: ptypes.func.isRequired,
-		startnhlquiz: ptypes.func.isRequired,
-		nhlquiz: ptypes.func.isRequired,
-		highscore: ptypes.func.isRequired
+		
     },
     onAnswerChanged: function(e) {
     	this.setState({ answer: e.currentTarget.value });
@@ -18,29 +16,69 @@ var quiz = React.createClass({
 		 return {on: false};
     },
     render: function(){
-        return (
-            <div >
-                <h2 id='h2'>Quiz</h2>
-				<button id='startbtn' onClick={this.props.start}>Mixed Quiz</button>
-				<button id='startbtnNHL' onClick={this.props.startnhlquiz}>NHL Quiz</button>
-				<button id='highscore' onClick={this.props.highscore}>Highscores</button>
-				<p id='highscoremsg'>{this.props.highscoremsg}</p>
-				<p id='quest'>{this.props.question}</p>
-                <p id='msg'>Message: {this.props.currentValue}</p>
-				<p id='pts'>Points: {this.props.Points}</p>
-                <p id='cont'>
-				
-					<input id='ch1' type="radio" name="q1" value="1" checked={this.state.answer === "1"} onChange={this.onAnswerChanged}/>{this.props.Choice1}<br/>
-					<input id='ch2' type="radio" name="q1" value="2" checked={this.state.answer === "2"} onChange={this.onAnswerChanged}/>{this.props.Choice2}<br/>
-					<input id='ch3' type="radio" name="q1" value="3" checked={this.state.answer === "3"} onChange={this.onAnswerChanged}/>{this.props.Choice3}<br/>
-				
-                    <button id='nxt' onClick={this.props.quiz.bind(null, this.state.answer)}>Next question</button>
-					<button id='nxtNHL' onClick={this.props.nhlquiz.bind(null, this.state.answer)}>Next</button>
+		if(!this.props.Inprogress)
+		{
+			return (
+				<div>
+					<h2 id='h2'>Quiz</h2>
 					
-                </p>
-				
-            </div>
-        );
+					<button id='startbtn' onClick={this.props.start.bind(null, '1')}>Mixed Quiz</button>
+					<button id='startbtn' onClick={this.props.start.bind(null,'2')}>NHL Quiz</button>
+					<p id='highscoremsg'>{this.props.highscoremsg}</p>
+					<p id='msg'>{this.props.currentValue}</p>
+				</div>
+			);
+		}
+		else{
+			console.log(this.props.start.bind);
+			if(this.props.start.quiznumber === '1' || this.state.quiznumber === '3')
+			{
+			var obj = {quiz:this.state.quiznumber = '3' ,answer:this.state.answer};	
+				return(
+					<div>
+						<h2 id='h2'>Quiz</h2>
+						<p id='quest'>{this.props.question}</p>
+						<p id='msg'>Message: {this.props.currentValue}</p>
+						<p id='pts'>Points: {this.props.Points}</p>
+						<p id='cont'>
+						
+							<input id='ch1' type="radio" name="q1" value="1" checked={this.state.answer === "1"} onChange={this.onAnswerChanged}/>{this.props.Choice1}<br/>
+							<input id='ch2' type="radio" name="q1" value="2" checked={this.state.answer === "2"} onChange={this.onAnswerChanged}/>{this.props.Choice2}<br/>
+							<input id='ch3' type="radio" name="q1" value="3" checked={this.state.answer === "3"} onChange={this.onAnswerChanged}/>{this.props.Choice3}<br/>
+							
+							<button id='nxt' onClick={this.props.quiz.bind(null, obj)}>Next question</button>
+							
+							
+						</p>
+						
+					</div>
+				);
+			}
+			else if(this.props.start === '2' || this.state.quiznumber === '4')
+			{
+				var obj = {quiz:this.state.quiznumber = '4' ,answer:this.state.answer};
+				return(
+					<div>
+						<h2 id='h2'>Quiz</h2>
+						<p id='quest'>{this.props.question}</p>
+						<p id='msg'>Message: {this.props.currentValue}</p>
+						<p id='pts'>Points: {this.props.Points}</p>
+						<p id='cont'>
+						
+							<input id='ch1' type="radio" name="q1" value="1" checked={this.state.answer === "1"} onChange={this.onAnswerChanged}/>{this.props.Choice1}<br/>
+							<input id='ch2' type="radio" name="q1" value="2" checked={this.state.answer === "2"} onChange={this.onAnswerChanged}/>{this.props.Choice2}<br/>
+							<input id='ch3' type="radio" name="q1" value="3" checked={this.state.answer === "3"} onChange={this.onAnswerChanged}/>{this.props.Choice3}<br/>
+							
+							
+							<button id='nxt' onClick={this.props.quiz.bind(null,obj)}>Next question</button>
+							
+						</p>
+						
+					</div>
+				);
+			}
+		}
+        
     }
 });
 
@@ -53,18 +91,11 @@ var mapDispatchToProps = function(dispatch){
         quiz: function(answer){
             dispatch(actions.quiz(answer));
         },
-		start: function(){
-            dispatch(actions.start());
+		start: function(quiznumber){
+            dispatch(actions.start(quiznumber));
         },
-		startnhlquiz: function(){
-            dispatch(actions.startnhlquiz());
-        },
-		nhlquiz: function(answer){
-            dispatch(actions.nhlquiz(answer));
-        },
-		highscore: function(){
-            dispatch(actions.highscore());
-        }
+		
+		
 		
     }
 };

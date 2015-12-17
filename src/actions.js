@@ -9,20 +9,13 @@ var constants = require("./constants");
 
 module.exports = {
 	
-	quiz: function(answer){
-		return {type: 'Pressed', answer: answer};
+	quiz: function(quiznumber){
+		return {type: quiznumber.quiz, answer: quiznumber.answer};
     },
-	start: function(){
-        return {type: 'Start'};
+	start: function(quiznumber){
+        return {type:quiznumber};
     },
-	startnhlquiz: function(){
-        return {type: 'StartNHLQuiz'};
-    },
-	nhlquiz: function(answer){
-		return {type: 'NHL Quiz', answer: answer};
-    },
-	highscore: function(){
-        return {type: 'Highscore'};
-    }
+	
+	
 	
 };

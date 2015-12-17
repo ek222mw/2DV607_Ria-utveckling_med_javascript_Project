@@ -11,24 +11,18 @@ fireRef.on("value", function(snapshot) {
 					var highscore = snapshot.val();
 					mixed = highscore.highscore;
 					
-				});
+});
 var QuizReducer = function(state, action){
     var newState = Object.assign({}, state);
 	newState.HighScore = mixed;
+	console.log(action.type);
+	
     switch(action.type){
 		
-		case 'Start':
+		case '1':
 		{
-			document.getElementById('startbtn').style.visibility= "hidden";
-			document.getElementById('startbtnNHL').style.visibility= "hidden";
-			document.getElementById('cont').style.visibility= "visible";
-			document.getElementById('nxt').style.visibility= "visible";
-			document.getElementById('nxtNHL').style.visibility= "hidden";
-			document.getElementById('quest').style.visibility= "visible";
-			document.getElementById('pts').style.visibility= "visible";
-			document.getElementById('msg').style.visibility= "visible";
-			document.getElementById('highscore').style.visibility= "hidden";
-			document.getElementById('highscoremsg').style.visibility= "hidden";
+			newState.Inprogress = true;
+			
 			newState.Points = 0;
 			newState.currentValue ="";
 			newState.pos = 0;
@@ -39,18 +33,10 @@ var QuizReducer = function(state, action){
 			return newState;
 		}
 		
-		case 'StartNHLQuiz':
+		case '2':
 		{
-			document.getElementById('startbtn').style.visibility= "hidden";
-			document.getElementById('startbtnNHL').style.visibility= "hidden";
-			document.getElementById('cont').style.visibility= "visible";
-			document.getElementById('nxt').style.visibility= "hidden";
-			document.getElementById('nxtNHL').style.visibility= "visible";
-			document.getElementById('quest').style.visibility= "visible";
-			document.getElementById('pts').style.visibility= "visible";
-			document.getElementById('msg').style.visibility= "visible";
-			document.getElementById('highscore').style.visibility= "hidden";
-			document.getElementById('highscoremsg').style.visibility= "hidden";
+			newState.Inprogress = true;
+			
 			newState.Points = 0;
 			newState.currentValue ="";
 			newState.pos = 0;
@@ -61,19 +47,11 @@ var QuizReducer = function(state, action){
 			return newState;
 		}
 		
-        case 'Pressed':
+        case '3':
 			
 			if(quizArr.length-1 === newState.pos)
 			{
-				
-				document.getElementById('startbtn').style.visibility= "visible";
-				document.getElementById('startbtnNHL').style.visibility= "visible";
-				document.getElementById('cont').style.visibility= "hidden";
-				document.getElementById('nxt').style.visibility= "hidden";
-				document.getElementById('quest').style.visibility= "hidden";
-				document.getElementById('pts').style.visibility= "hidden";
-				document.getElementById('msg').style.visibility= "visible";
-				document.getElementById('highscore').style.visibility= "visible";
+				newState.Inprogress = false;
 				if(action.answer === quizArr[newState.pos].CorrAns)
 				{
 					
@@ -130,26 +108,12 @@ var QuizReducer = function(state, action){
 				return newState;
 				
 			}
-     case 'Highscore':
-	 {
-		console.log("hej");
-		document.getElementById('highscoremsg').style.visibility= "visible";
-		return newState;
-	 }	 
-       
     
-	 case 'NHL Quiz':
+	 case '4':
 			
 			if(nhlquiz.length-1 === newState.pos)
 			{
-				document.getElementById('startbtn').style.visibility= "visible";
-				document.getElementById('startbtnNHL').style.visibility= "visible";
-				document.getElementById('cont').style.visibility= "hidden";
-				document.getElementById('nxtNHL').style.visibility= "hidden";
-				document.getElementById('quest').style.visibility= "hidden";
-				document.getElementById('pts').style.visibility= "hidden";
-				document.getElementById('msg').style.visibility= "visible";
-				document.getElementById('highscore').style.visibility= "visible";
+				newState.Inprogress = false;
 				if(action.answer === nhlquiz[newState.pos].CorrAns)
 				{
 					newState.Points++;
