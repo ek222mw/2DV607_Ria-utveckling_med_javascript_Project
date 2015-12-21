@@ -24,6 +24,7 @@ var quiz = React.createClass({
 					<button id='startbtn' onClick={this.props.start.bind(null,'1')}>Mixed Quiz</button>
 					<button id='startbtn' onClick={this.props.start.bind(null,'2')}>NHL Quiz</button>
 					<p id='highscoremsg'>{this.props.highscoremsg}</p>
+					<p>{this.props.hsmsgnhl}</p>
 					<p id='msg'>{this.props.currentValue}</p>
 				</div>
 			);

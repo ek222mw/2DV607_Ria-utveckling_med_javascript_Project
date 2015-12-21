@@ -27,7 +27,8 @@ module.exports = function(){
 				highscoremsg: "",
 				Inprogress: false,
 				quiznumber:0,
-				ch: 0
+				HighScoreNhl: 0,
+				hsmsgnhl: ""
 		}	
     }
 };

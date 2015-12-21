@@ -6,16 +6,18 @@ var C = require('./../constants');
 Firebase = require("firebase"),
 fireRef = new Firebase(C.FIREBASE);
 var mixed;
+var nhl;
 fireRef.on("value", function(snapshot) {
 					
 					var highscore = snapshot.val();
 					mixed = highscore.highscore;
+					nhl = highscore.highscorenhl;
 					
 });
 var QuizReducer = function(state, action){
     var newState = Object.assign({}, state);
 	newState.HighScore = mixed;
-	
+	newState.HighScoreNhl = nhl;
     switch(action.type){
 		case '1':
 		{
@@ -52,11 +54,10 @@ var QuizReducer = function(state, action){
 				newState.Inprogress = false;
 				if(action.answer === quizArr[newState.pos].CorrAns)
 				{
-					
 					newState.Points++;
 				}
 				newState.currentValue = "You score was "+newState.Points+"/"+quizArr.length;
-				
+				newState.hsmsgnhl = "NHL Highscore is "+newState.HighScoreNhl+"/"+3;
 				if(newState.Points > mixed)
 				{
 					fireRef.child('highscore').set(newState.Points);
@@ -111,6 +112,19 @@ var QuizReducer = function(state, action){
 					newState.Points++;
 				}
 				newState.currentValue = "You score was "+newState.Points+"/"+nhlquiz.length;
+				newState.highscoremsg = "Mixed Highscore is "+newState.HighScore+"/"+3;
+				if(newState.Points > nhl)
+				{
+					fireRef.child('highscorenhl').set(newState.Points);
+					
+					newState.hsmsgnhl = "NHL Highscore is "+newState.Points+"/"+nhlquiz.length;
+					
+				}
+				else
+				{
+					newState.hsmsgnhl = "NHL Highscore is "+newState.HighScoreNhl+"/"+nhlquiz.length;
+				}
+				
 				return newState;
 			}
 			
