@@ -56,7 +56,7 @@ var QuizReducer = function(state, action){
 				{
 					newState.Points++;
 				}
-				newState.currentValue = "You score was "+newState.Points+"/"+quizArr.length;
+				newState.currentValue = "Your score was "+newState.Points+"/"+quizArr.length;
 				newState.hsmsgnhl = "NHL Highscore is "+newState.HighScoreNhl+"/"+3;
 				if(newState.Points > mixed)
 				{
@@ -111,7 +111,7 @@ var QuizReducer = function(state, action){
 				{
 					newState.Points++;
 				}
-				newState.currentValue = "You score was "+newState.Points+"/"+nhlquiz.length;
+				newState.currentValue = "Your score was "+newState.Points+"/"+nhlquiz.length;
 				newState.highscoremsg = "Mixed Highscore is "+newState.HighScore+"/"+3;
 				if(newState.Points > nhl)
 				{

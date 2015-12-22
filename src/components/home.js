@@ -4,7 +4,7 @@ var Home = React.createClass({
     render: function(){
         return (
             <div>
-                <h2>Hello World!</h2>
+                <p>This quiz game contains two different quiz with one mix quiz and one nhl quiz.<br/> Just click the quiz link in navigation to start play!</p>
             </div>
         );
     }

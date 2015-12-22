@@ -1,0 +1,58 @@
+body{
+	background-color: #f2f2f2;
+}
+.start{
+	width: 320px;
+    padding: 10px;
+    border: 5px solid gray;
+	border-radius:5px;
+	box-shadow:10px 10px 5px rgba(0,0,0,0.5);
+    margin: 0;
+	background-color:white;
+	
+}
+.quest{
+	width: 320px;
+    padding: 10px;
+    border: 5px solid gray;
+	border-radius:5px;
+	box-shadow:10px 10px 5px rgba(0,0,0,0.5);
+    margin: 0;
+	background-color:white;
+}
+.stbtn{
+	margin-left:1%;
+}
+
+.radio{
+   display: none;
+}
+.radio{
+    -webkit-appearance: none;
+    background-color: #e1e1e1;
+    border: 4px solid #e1e1e1;
+    border-radius: 10px;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    width: 10px;
+    height: 10px;
+}
+
+
+.radio:checked{
+    background: red;
+    border:solid #e1e1e1;
+}
+#highscoremsg{
+	color: #fff;
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff2d95, 0 0 30px #ff2d95, 0 0 40px #ff2d95, 0 0 50px #ff2d95, 0 0 75px #ff2d95;
+	letter-spacing: 5px;
+	font: 'MisoRegular';
+}
+#highscorenhl{
+	color: #fff;
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff2d95, 0 0 30px #ff2d95, 0 0 40px #ff2d95, 0 0 50px #ff2d95, 0 0 75px #ff2d95;
+	letter-spacing: 5px;
+	font: 'MisoRegular';
+}

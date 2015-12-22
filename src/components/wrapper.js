@@ -6,7 +6,7 @@ var Wrap = React.createClass({
     render: function(){
         return (
             <div id="wrapper">
-                <h1>Hello World, using react and redux</h1>
+                <h1>Welcome to my quiz game!</h1>
                 <Nav/>
                 {this.props.children}
             </div>
