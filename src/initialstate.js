@@ -23,7 +23,8 @@ module.exports = function(){
 			quiznumber:0,
 			HighScoreNhl: 0,
 			hsmsgnhl: "",
-			temp: 0
+			temp: 0,
+			quiznow: 0
 		}	
     }
 };
