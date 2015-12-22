@@ -2,10 +2,10 @@ var React = require('react'),
     ptypes = React.PropTypes,
     ReactRedux = require('react-redux'),
     actions = require('../actions');
-
+var ch;
 var quiz = React.createClass({
     propTypes: {
-        quiz: ptypes.func.isRequired,
+        quest: ptypes.func.isRequired,
 		start: ptypes.func.isRequired,
 		
     },
@@ -32,18 +32,19 @@ var quiz = React.createClass({
 		else{
 			if(ch === '1' || this.state.quiznumber === '3' &! ch === '2')
 			{
-			var obj = {quiz:this.state.quiznumber = '3' ,answer:this.state.answer};	
+				
+			var obj = {quest:this.state.quiznumber = '3' ,answer:this.state.answer};	
 				return(
 					<div className="quest">
 						<h2 id='h2'>Quiz</h2>
-						<p id='quest'>{this.props.question}</p>
+						<p id='quest'>{this.props.qobj.quest}</p>
 						<p id='pts'>Points: {this.props.Points}</p>
 						<p id='cont'>
 						
-							<input className="radio" type="radio" name="q1" value="1" checked={this.state.answer === "1"} onChange={this.onAnswerChanged}/>{this.props.Choice1}<br/>
-							<input className="radio" type="radio" name="q1" value="2" checked={this.state.answer === "2"} onChange={this.onAnswerChanged}/>{this.props.Choice2}<br/>
-							<input className="radio" type="radio" name="q1" value="3" checked={this.state.answer === "3"} onChange={this.onAnswerChanged}/>{this.props.Choice3}<br/>
-							<button id='nxt' onClick={this.props.quiz.bind(null, obj)}>Next question</button>
+							<input className="radio" type="radio" name="q1" value="1" checked={this.state.answer === "1"} onChange={this.onAnswerChanged}/>{this.props.qobj.opt[0]}<br/>
+							<input className="radio" type="radio" name="q1" value="2" checked={this.state.answer === "2"} onChange={this.onAnswerChanged}/>{this.props.qobj.opt[1]}<br/>
+							<input className="radio" type="radio" name="q1" value="3" checked={this.state.answer === "3"} onChange={this.onAnswerChanged}/>{this.props.qobj.opt[2]}<br/>
+							<button id='nxt' onClick={this.props.quest.bind(null, obj)}>Next question</button>
 							
 							
 						</p>
@@ -53,20 +54,20 @@ var quiz = React.createClass({
 			}
 			else if(ch === '2' || this.state.quiznumber === '4' &! ch === '1')
 			{
-				var obj = {quiz:this.state.quiznumber = '4' ,answer:this.state.answer};
+				var obj = {quest:this.state.quiznumber = '4' ,answer:this.state.answer};
 				return(
 					<div className='quest'>
 						<h2 id='h2'>Quiz</h2>
-						<p id='quest'>{this.props.question}</p>
+						<p id='quest'>{this.props.qobj.quest}</p>
 						<p id='pts'>Points: {this.props.Points}</p>
 						<p id='cont'>
 						
-							<input className="radio"  type="radio" name="q1" value="1" checked={this.state.answer === "1"} onChange={this.onAnswerChanged}/>{this.props.Choice1}<br/>
-							<input className="radio" type="radio" name="q1" value="2" checked={this.state.answer === "2"} onChange={this.onAnswerChanged}/>{this.props.Choice2}<br/>
-							<input className="radio" type="radio" name="q1" value="3" checked={this.state.answer === "3"} onChange={this.onAnswerChanged}/>{this.props.Choice3}<br/>
+							<input className="radio"  type="radio" name="q1" value="1" checked={this.state.answer === "1"} onChange={this.onAnswerChanged}/>{this.props.qobj.opt[0]}<br/>
+							<input className="radio" type="radio" name="q1" value="2" checked={this.state.answer === "2"} onChange={this.onAnswerChanged}/>{this.props.qobj.opt[1]}<br/>
+							<input className="radio" type="radio" name="q1" value="3" checked={this.state.answer === "3"} onChange={this.onAnswerChanged}/>{this.props.qobj.opt[2]}<br/>
 							
 							
-							<button id='nxt' onClick={this.props.quiz.bind(null,obj)}>Next question</button>
+							<button id='nxt' onClick={this.props.quest.bind(null,obj)}>Next question</button>
 							
 						</p>
 						
@@ -85,8 +86,8 @@ var mapStateToProps = function(state){
 var mapDispatchToProps = function(dispatch){
 	
     return {
-        quiz: function(answer){
-            dispatch(actions.quiz(answer));
+        quest: function(answer){
+            dispatch(actions.quest(answer));
         },
 		start: function(quiznumber){
 			ch = quiznumber;

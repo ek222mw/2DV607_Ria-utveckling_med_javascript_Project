@@ -15,20 +15,15 @@ module.exports = function(){
         quiz: {
             currentValue: "",
 			Points: 0,
-			question: "",
-				CountQuestions: 0,
-				CountChoices: 0,
-				Choice1: "",
-				Choice2: "",
-				Choice3: "",
-				CountAnswers: 0,
-				pos: 0,
-				HighScore: 0,
-				highscoremsg: "",
-				Inprogress: false,
-				quiznumber:0,
-				HighScoreNhl: 0,
-				hsmsgnhl: ""
+			qobj: 0,
+			pos: 0,
+			HighScore: 0,
+			highscoremsg: "",
+			Inprogress: false,
+			quiznumber:0,
+			HighScoreNhl: 0,
+			hsmsgnhl: "",
+			temp: 0
 		}	
     }
 };
