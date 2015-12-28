@@ -31,7 +31,7 @@ module.exports = {
 				fireRef.child('highscore').set(newState.quiz.Points);
 						
 				newState.quiz.highscoremsg = "Mixed Highscore is "+newState.quiz.Points+"/"+newState.quiz.temp.length;
-				newState.quiz.quiznow = 0;
+				
 			}
 			else{
 				newState.quiz.highscoremsg = "Mixed Highscore is "+newState.quiz.HighScore+"/"+newState.quiz.temp.length;
@@ -43,7 +43,7 @@ module.exports = {
 				fireRef.child('highscorenhl').set(newState.quiz.Points);
 				
 				newState.quiz.hsmsgnhl = "NHL Highscore is "+newState.quiz.Points+"/"+newState.quiz.temp.length;
-				newState.quiz.quiznow = 0;
+				
 			}
 			else
 			{
