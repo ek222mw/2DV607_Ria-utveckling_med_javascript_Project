@@ -19,7 +19,7 @@ fireRef.on("value", function(snapshot) {
 module.exports = {
    quest: function(quiznumber){
    return function(dispatch,getState){
-	   dispatch({type: quiznumber.quest, answer: quiznumber.answer});
+	   dispatch({type: 'Answer', answer: quiznumber.answer, quiznr:quiznumber.quest });
 			var newState = getState();
 			
 			newState.quiz.HighScore = mixed;
@@ -30,32 +30,21 @@ module.exports = {
 				
 				fireRef.child('highscore').set(newState.quiz.Points);
 						
-				newState.quiz.highscoremsg = "Mixed Highscore is "+newState.quiz.Points+"/"+newState.quiz.temp.length;
-				
 			}
-			else{
-				newState.quiz.highscoremsg = "Mixed Highscore is "+newState.quiz.HighScore+"/"+newState.quiz.temp.length;
-			}
+			
 			
 			if(newState.quiz.Points > nhl && newState.quiz.quiznow == 2)
 			{
 				
 				fireRef.child('highscorenhl').set(newState.quiz.Points);
 				
-				newState.quiz.hsmsgnhl = "NHL Highscore is "+newState.quiz.Points+"/"+newState.quiz.temp.length;
-				
 			}
-			else
-			{
-				newState.quiz.hsmsgnhl = "NHL Highscore is "+newState.quiz.HighScoreNhl+"/"+newState.quiz.temp.length;
-			}
-			
 			
 		};
    
    },
 
    start: function(quiznumber){
-          return {type:quiznumber};
+          return {type:'Start', quiznr:quiznumber};
       },
   };
