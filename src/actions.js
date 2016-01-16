@@ -5,8 +5,8 @@ This module contains action creators. They are functions which will return an ob
 These actions are imported by Redux-aware components who need them, in our case it is just Home.
 */
 var C = require('./constants');
-Firebase = require("firebase"),
-fireRef = new Firebase(C.FIREBASE);
+var Firebase = require("firebase");
+var fireRef = new Firebase(C.FIREBASE);
 var mixed;
 var nhl;
 fireRef.on("value", function(snapshot) {
