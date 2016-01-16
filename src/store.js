@@ -1,6 +1,6 @@
 var Redux = require('redux'),
     QuizReducer = require('./reducers/quiz'),
-    initialState = require('./initialstate');
+    initialState = require('./initialstate'),
 	thunk = require('redux-thunk'); // allows us to use asynchronous actions
 
 var reducers = Redux.combineReducers({

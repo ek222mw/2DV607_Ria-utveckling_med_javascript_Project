@@ -37,6 +37,7 @@ var quiz = React.createClass({
 				return(
 					<div className="quest">
 						<h2 id='h2'>Quiz</h2>
+						<button className='stbtn' onClick={this.props.start.bind(null,'1')}>Reset</button>
 						<p id='quest'>{this.props.qobj.quest}</p>
 						<p id='pts'>Points: {this.props.Points}</p>
 						<p id='cont'>
@@ -58,6 +59,7 @@ var quiz = React.createClass({
 				return(
 					<div className='quest'>
 						<h2 id='h2'>Quiz</h2>
+						<button className='stbtn' onClick={this.props.start.bind(null,'2')}>Reset</button>
 						<p id='quest'>{this.props.qobj.quest}</p>
 						<p id='pts'>Points: {this.props.Points}</p>
 						<p id='cont'>
