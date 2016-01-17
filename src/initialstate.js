@@ -8,10 +8,7 @@ It returns a function instead of an object to make sure no one can change the in
 
 var C = require("./constants");
 
-module.exports = function(){
-	
-	
-    return {
+module.exports = {
         quiz: {
             currentValue: "",
 			Points: 0,
@@ -25,6 +22,5 @@ module.exports = function(){
 			hsmsgnhl: "",
 			temp: 0,
 			quiznow: 0
-		}	
-    }
+		}
 };
