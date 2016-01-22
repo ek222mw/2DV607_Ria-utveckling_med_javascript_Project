@@ -9,4 +9,4 @@ var reducers = Redux.combineReducers({
 
 var store = Redux.createStore(reducers, initialState());
 
-module.exports =  Redux.applyMiddleware(thunk)(Redux.createStore)(reducers,initialState);
+module.exports =  Redux.applyMiddleware(thunk)(Redux.createStore)(reducers,initialState());

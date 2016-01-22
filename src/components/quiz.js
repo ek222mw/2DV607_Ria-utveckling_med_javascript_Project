@@ -1,102 +1,74 @@
 var React = require('react'),
     ptypes = React.PropTypes,
     ReactRedux = require('react-redux'),
-    actions = require('../actions');
-var ch;
+    actions = require('../actions'),
+    chosenQuizNumber;
+
 var quiz = React.createClass({
     propTypes: {
-        quest: ptypes.func.isRequired,
-		start: ptypes.func.isRequired,
-		
+        answerQuestion: ptypes.func.isRequired,
+        start: ptypes.func.isRequired
     },
-    onAnswerChanged: function(e) {
-    	this.setState({ answer: e.currentTarget.value });
+    onAnswerChanged: function (e) {
+        // Converting to number here prevents any other type problems
+        this.setState({answer: Number(e.currentTarget.value)});
     },
-	getInitialState: function() {
-		 return {on: false};
+    getInitialState: function () {
+        return {on: false};
     },
-    render: function(){
-		if(!this.props.Inprogress)
-		{
-			return (
-				<div className="start">
-					<h2 id='h2'>Quiz</h2>
-					<button className='startbtn' onClick={this.props.start.bind(null,'1')}>Mixed Quiz</button>
-					<button className='stbtn' onClick={this.props.start.bind(null,'2')}>NHL Quiz</button>
-					<p id='highscoremsg'>{this.props.highscoremsg}</p>
-					<p id='highscorenhl'>{this.props.hsmsgnhl}</p>
-					<p id='msg'>{this.props.currentValue}</p>
-				</div>
-			);
-		}
-		else{
-			if(ch === '1' || this.state.quiznumber === '3' &! ch === '2')
-			{
-				
-			var obj = {quest:this.state.quiznumber = '3' ,answer:this.state.answer};	
-				return(
-					<div className="quest">
-						<h2 id='h2'>Quiz</h2>
-						<p id='quest'>{this.props.qobj.quest}</p>
-						<p id='pts'>Points: {this.props.Points}</p>
-						<p id='cont'>
-						
-							<input className="radio" type="radio" name="q1" value="1" checked={this.state.answer === "1"} onChange={this.onAnswerChanged}/>{this.props.qobj.opt[0]}<br/>
-							<input className="radio" type="radio" name="q1" value="2" checked={this.state.answer === "2"} onChange={this.onAnswerChanged}/>{this.props.qobj.opt[1]}<br/>
-							<input className="radio" type="radio" name="q1" value="3" checked={this.state.answer === "3"} onChange={this.onAnswerChanged}/>{this.props.qobj.opt[2]}<br/>
-							<button id='nxt' onClick={this.props.quest.bind(null, obj)}>Next question</button>
-							
-							
-						</p>
-						
-					</div>
-				);
-			}
-			else if(ch === '2' || this.state.quiznumber === '4' &! ch === '1')
-			{
-				var obj = {quest:this.state.quiznumber = '4' ,answer:this.state.answer};
-				return(
-					<div className='quest'>
-						<h2 id='h2'>Quiz</h2>
-						<p id='quest'>{this.props.qobj.quest}</p>
-						<p id='pts'>Points: {this.props.Points}</p>
-						<p id='cont'>
-						
-							<input className="radio"  type="radio" name="q1" value="1" checked={this.state.answer === "1"} onChange={this.onAnswerChanged}/>{this.props.qobj.opt[0]}<br/>
-							<input className="radio" type="radio" name="q1" value="2" checked={this.state.answer === "2"} onChange={this.onAnswerChanged}/>{this.props.qobj.opt[1]}<br/>
-							<input className="radio" type="radio" name="q1" value="3" checked={this.state.answer === "3"} onChange={this.onAnswerChanged}/>{this.props.qobj.opt[2]}<br/>
-							
-							
-							<button id='nxt' onClick={this.props.quest.bind(null,obj)}>Next question</button>
-							
-						</p>
-						
-					</div>
-				);
-			}
-		}
-        
+    render: function () {
+        var obj;
+        var props = this.props;
+        var state = this.state;
+        var onAnswerChanged = this.onAnswerChanged;
+
+        if (!props.inProgress) {
+            return (
+                <div className="start">
+                    <h2 id='h2'>Quiz</h2>
+                    <button className='startbtn' onClick={props.start.bind(null,1)}>Mixed Quiz</button>
+                    <button className='stbtn' onClick={props.start.bind(null,2)}>NHL Quiz</button>
+                    <p id='highscoremsg'>{props.highscoremsg}</p>
+                    <p id='highscorenhl'>{props.hsmsgnhl}</p>
+                    <p id='msg'>{props.scoreMessage}</p>
+                </div>
+            );
+        }
+        else {
+            obj = {quizNumber: chosenQuizNumber, answer: state.answer};
+            var radiobuttons = this.props.QuestionObject.opt.map(function (option, index) {
+                return (<div key={index}><label>
+                    <input type="radio" className="radio" name="q1" value={index}
+                           checked={state.answer === index}
+                           onChange={onAnswerChanged}/>{props.QuestionObject.opt[index]}</label></div>);
+            });
+            return (
+                <div className="quest">
+                    <h2 id='h2'>Quiz</h2>
+                    <p id='quest'>{props.QuestionObject.question}</p>
+                    <p id='pts'>Points: {props.points}</p>
+                    <div id='cont'>
+                        {radiobuttons}
+                        <button id='nxt' onClick={props.answerQuestion.bind(null, obj)}>Next question</button>
+                    </div>
+                </div>
+            );
+        }
     }
 });
 
-var mapStateToProps = function(state){
+var mapStateToProps = function (state) {
     return state.quiz;
 };
-
-var mapDispatchToProps = function(dispatch){
-	
+var mapDispatchToProps = function (dispatch) {
     return {
-        quest: function(answer){
+        answerQuestion: function (answer) {
             dispatch(actions.quest(answer));
         },
-		start: function(quiznumber){
-			ch = quiznumber;
-            dispatch(actions.start(quiznumber));
-			
-        },
-		
-		
-		
+        start: function (quizNumber) {
+            chosenQuizNumber = quizNumber;
+            dispatch(actions.start(quizNumber));
+        }
     }
 };
 
